@@ -30,8 +30,8 @@ public class AlgorithmChallengeTests
 
     @Test
     public void testCyclicRotation(){
-        int[] nums = { 1,2,3,4};
-        assertEquals(nums, test.cyclicRotate(nums, 4 ));
+        int[] nums = { 1,2,3,4}, result = {1,2,3,4};
+        assertArrayEquals(result, test.cyclicRotate(nums,4));
     }
 
     @Test
@@ -53,6 +53,26 @@ public class AlgorithmChallengeTests
     {
         String input = ")(";
         assertFalse(test.matchedBrackets(input));
+    }
+
+    @Test
+    public void perm_missing_elementSpec(){
+        int[] nums = {2,3,1,5};
+        assertEquals(4, test.permMissingElement(nums));
+    }
+
+    @Test
+    public void tape_equi_test_spec(){
+        int[] input = {3, 1, 2, 4, 3};
+
+        assertEquals(1, test.tapeEquilibriumTest(input));
+    }
+
+    @Test
+    public void max_Counter_test_spec(){
+        int[] result ={3,2,2,4,2}, operations = {3,4,4,6,1,4,4};
+        int input = 5;
+        assertArrayEquals(result, test.maxCounter(input,operations));
     }
 
 
