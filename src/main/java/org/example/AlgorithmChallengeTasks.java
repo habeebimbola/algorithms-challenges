@@ -234,8 +234,29 @@ public class AlgorithmChallengeTasks {
             }
         }
 
-
         return result;
     }
 
+    public int missingInteger(int[] nums) {
+        int missing = 1, size = nums.length;
+
+        if (size == 1 && nums[size - 1] > 1){
+            return missing;
+        }
+
+        Arrays.sort(nums);
+
+        if (nums[size - 1] < 1){
+            return missing;
+        }
+
+        for (int index = 0; index < size; index++){
+
+            if(missing == nums[index]){
+                missing++;
+            }
+        }
+
+        return missing;
+    }
 }

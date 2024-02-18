@@ -75,5 +75,12 @@ public class AlgorithmChallengeTests
         assertArrayEquals(result, test.maxCounter(input,operations));
     }
 
+    @Test
+    public void missing_Integer_Test_Spec(){
+        int nums[] = {-1,-3}, result = 1;
+
+        assertEquals(result, test.missingInteger(nums));
+    }
+
 
 }
