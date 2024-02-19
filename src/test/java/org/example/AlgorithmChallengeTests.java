@@ -82,5 +82,18 @@ public class AlgorithmChallengeTests
         assertEquals(result, test.missingInteger(nums));
     }
 
+    @Test
+    public void distinct_test_spec(){
+        int[] nums = {2, 1, 1, 2, 3, 1};
+        int result = 3;
+        assertEquals(result, test.distinctCount(nums));
+    }
+
+    @Test
+    public void longestSubstringTestSpec(){
+        String input = "aabbbcccc";
+        int result = 1;
+        assertEquals(4, test.longestSubstringSize(input));
+    }
 
 }

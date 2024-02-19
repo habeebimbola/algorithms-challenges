@@ -259,4 +259,43 @@ public class AlgorithmChallengeTasks {
 
         return missing;
     }
+
+    public int distinctCount(int[] nums) {
+        int count = 0;
+
+        Set<Integer> integerSet = new HashSet<>();
+
+        for (int index = 0; index < nums.length; index++){
+            integerSet.add(nums[index]);
+        }
+        count = integerSet.size();
+
+        return  count;
+
+    }
+
+    public int longestSubstringSize(String input) {
+        int longest = 0, counter = 0;
+
+        Map<Character, Integer> charsMap = new HashMap<>();
+
+        for (int index = 0; index < input.length(); index++){
+            char ch = input.charAt(index);
+
+            if(charsMap.containsKey(ch)) // Character already exists, so increase it's frequency
+            {
+                counter = charsMap.get(ch)  + 1;
+                charsMap.put(ch, counter);
+            }else { // Beginning To Track New Character
+                charsMap.put(ch, 1);
+            }
+        }
+        for (Character ch : charsMap.keySet()){
+            if (longest < charsMap.get(ch)){
+                longest = charsMap.get(ch);
+            }
+        }
+
+        return longest;
+    }
 }
