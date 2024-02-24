@@ -71,9 +71,31 @@ public class AlgorithmChallengeTasks {
         AlgorithmChallengeTasks practiseTest = new AlgorithmChallengeTasks();
         int[] ints = {3, 8, 9, 7, 6}, nums ={3,4,4,6,1,4,4};
 //        practiseTest.cyclicRotate(ints, 3);
-
+//        practiseTest.maxCounter(5,nums );
 //        practiseTest.permMissingElement(nums);
-        practiseTest.maxCounter(5,nums );
+        String sentence = "There are two black birds sitting on a wall One " +
+                          "named Peter One named Paul Fly Away Peter Fly Away Paul";
+        practiseTest.fixedWidth(sentence, 3);
+    }
+
+    public void fixedWidth(String words, int width){
+
+        String[] wordTokens = words.split("\\s+");
+        int wordLength = wordTokens.length, line = 1;
+
+        while ( line <= wordLength){
+
+            System.out.print(wordTokens[line - 1] +" ");
+            if ( line % width == 0 ){
+                System.out.println();
+            }
+
+            line++;
+        }
+
+
+
+
     }
 
     public int[] cyclicRotate(int[] nums, int i) {
