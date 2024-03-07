@@ -96,4 +96,16 @@ public class AlgorithmChallengeTests
         assertEquals(4, test.longestSubstringSize(input));
     }
 
+    @Test
+    public void closestToZeroSpec(){
+       double[] items = {7,-10, 13, 8, 4, -7.2, -12,-3.7,3.5,-9.6, 6.5,-1.7, -6.2,7}; int[] nums = {-15 ,-7 ,-9 ,-14 ,-12};
+
+       assertEquals( -7, test.closestToZero(nums));
+    }
+
+    @Test @Deprecated
+    public void closestSpec(){
+        int[] nums = {7 ,5 ,9 ,1 ,4}, ints = {-10,-10};
+        assertEquals(1, test.closestTozero(nums));
+    }
 }

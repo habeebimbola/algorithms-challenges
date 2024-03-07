@@ -2,6 +2,8 @@ package org.example;
 
 import java.util.*;
 
+import static java.util.Arrays.asList;
+
 /**
  * @Author Habeeb Animashaun
  * email: habeebimbola@yahoo.com
@@ -320,4 +322,58 @@ public class AlgorithmChallengeTasks {
 
         return longest;
     }
+
+    public double closestToZero(int[] items) {
+        int size = items.length;
+
+        if (size == 0) return 0;
+
+        var closest = items[0];
+
+        for (int index = 0; index < size; index++){
+
+            var number = items[index];
+            var absNumber = Math.abs(number);
+            var absClosest = Math.abs(closest);
+
+            if( absNumber < absClosest){
+                closest = number;
+            }else if(absNumber == absClosest && closest < 0){
+                closest = number;
+            }
+
+        }
+
+        return closest;
+    }
+
+    public double closestTozero(int[] nums){
+        int size = nums.length;
+
+        if (size == 0 ){
+            return 0;
+        }
+
+        Arrays.sort(nums);
+
+        if(nums[0] < 0 && nums[size - 1] < 0){
+            return  nums[size - 1];
+        }
+
+
+        int closest = nums[0];
+
+        for (int index = 1; index < size; index++){
+            if( closest < 0 && nums[index] > 0 ){
+                closest = nums[index];
+            } else if (closest > nums[index]) {
+                closest = nums[index];
+                return  closest;
+            }
+        }
+
+        return closest;
+    }
+
 }
+
