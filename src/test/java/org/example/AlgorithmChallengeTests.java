@@ -108,4 +108,26 @@ public class AlgorithmChallengeTests
         int[] nums = {7 ,5 ,9 ,1 ,4}, ints = {-10,-10};
         assertEquals(1, test.closestTozero(nums));
     }
+
+    @Test
+    public void lengthOfLongestSubstringTest(){
+        assertEquals(4,test.lengthOfLongestSubstring("abcabcdbb"));
+    }
+
+    @Test
+    public void longestStringTest(){
+        assertEquals(4, test.longestString("abcabcdbb"));
+    }
+
+    @Test
+    public void twoSumTestSpec(){
+        int[] result = {0,1}, nums = {2,7,11,15};
+        assertArrayEquals(result ,test.twoSumMap(nums,9));
+    }
+
+    @Test
+    public void intersectionTestSpec(){
+        int[] result = {9,4}, input1 = {4,9,5}, input2 = {9,4,9,8,4};
+        assertArrayEquals(result, test.intersection(input1,input2));
+    }
 }
