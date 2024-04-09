@@ -70,14 +70,55 @@ public class AlgorithmChallengeTasks {
 
     public static void main(String... args) {
         AlgorithmChallengeTasks practiseTest = new AlgorithmChallengeTasks();
-        int[] ints = {3, 8, 9, 7, 6}, nums = {3, 4, 4, 6, 1, 4, 4};
+        int[] ints = {-15 ,-7 ,-9 ,-14 ,-12}, nums = {3, 4, 4, 6, 1, 4, 4};
 //        practiseTest.cyclicRotate(ints, 3);
 //        practiseTest.maxCounter(5,nums );
 //        practiseTest.permMissingElement(nums);
+        practiseTest.closestTozero(ints);
         String sentence = "There are two black birds sitting on a wall One " +
                 "named Peter One named Paul Fly Away Peter Fly Away Paul";
         practiseTest.fixedWidth(sentence, 3);
+
+        List<Integer> integerList = new ArrayList<>();
+        integerList.add(1);integerList.add(5);
+
+        for (int index: integerList){
+//            integerList.add(6);
+        }
+
+//        Iterator iterator= integerList.iterator();
+//
+//        while (iterator.hasNext())
+//        {
+//            iterator.next();
+//        }
+        NodeList nodeList = new NodeList();
+
+        Node first = new Node(1);
+        Node second = new Node(2);
+        Node third = new Node(3);
+        Node fourth = new Node(4);
+        Node fifth = new Node(5);
+
+        nodeList.addNode(first);
+        nodeList.addNode(second);
+        nodeList.addNode(third);
+        nodeList.addNode(fourth);
+        nodeList.addNode(fifth);
+
+        Node parent = nodeList.getFirstNode();
+        int count = 0;
+        while (parent != null){
+            System.out.println(parent.value);
+            parent = parent.nextNode;
+            count++;
+        }
+        System.out.println("Total Nodes "+count);
+
+        nodeList.removeNth(0);
+
     }
+
 
     public void fixedWidth(String words, int width) {
 
@@ -354,7 +395,6 @@ public class AlgorithmChallengeTasks {
             return nums[size - 1];
         }
 
-
         int closest = nums[0];
 
         for (int index = 1; index < size; index++) {
@@ -380,7 +420,8 @@ public class AlgorithmChallengeTasks {
             while (!set.add(s.charAt(right))) {
                 set.remove(s.charAt(left++));
             }
-            max = Math.max(max, right - left + 1);
+//            max = Math.max(max, right - left + 1);
+            max = Math.max(max, set.size());
         }
         return max;
     }
@@ -559,6 +600,94 @@ public class AlgorithmChallengeTasks {
         return resultList.stream().mapToInt(x -> x).toArray();
 
     }
+
+
+    public boolean threeSumValue(int[] input, int target) {
+        int size = input.length, low = 0, high = size - 1, sum = 0;
+
+        Arrays.sort(input);
+
+        for(int currentIndex = 0; currentIndex < size; currentIndex++) {
+
+            low = currentIndex + 1;
+            high = size - 1;
+
+            while (low < high) {
+                sum = input[currentIndex] + input[low] + input[high];
+
+                if (sum == target) {
+                    return true;
+                }
+
+                if (sum > target) {
+                    high--;
+                }
+                if (sum < target) {
+                    low++;
+                }
+            }
+        }
+
+        return  false;
+    }
+
+   static class Node{
+        Integer value;
+        Node nextNode;
+
+       public Node(Integer value) {
+           this.value = value;
+       }
+   }
+  static  class NodeList{
+        private Node firstNode;
+
+      public boolean isEmpty(){
+          return (firstNode == null);
+      }
+      public void addNode(Node node){
+
+          if(isEmpty())
+          {
+             firstNode = new Node(node.value);
+             return;
+          }
+
+          Node currentNode = firstNode;
+
+          while (currentNode != null){
+              currentNode = currentNode.nextNode;
+          }
+          currentNode = node;
+//          currentNode.nextNode = firstNode;
+//          firstNode = currentNode;
+
+
+          currentNode = firstNode;
+          firstNode = node;
+          firstNode.nextNode = currentNode;
+
+        }
+
+      public Node getFirstNode() {
+          return firstNode;
+      }
+
+      public void removeNth(int position){
+
+          Node pointer = firstNode;
+
+          while (position >= 1){
+              pointer = pointer.nextNode;
+              position--;
+          }
+          
+      }
+  }
+
+
+
+
 
 }
 

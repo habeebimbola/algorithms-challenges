@@ -116,7 +116,9 @@ public class AlgorithmChallengeTests
 
     @Test
     public void longestStringTest(){
-        assertEquals(4, test.longestString("abcabcdbb"));
+//        assertEquals(4, test.longestString("abcabcdbb"));
+        assertEquals(3,test.lengthOfLongestSubstring("dvdf"));
+
     }
 
     @Test
@@ -130,4 +132,19 @@ public class AlgorithmChallengeTests
         int[] result = {9,4}, input1 = {4,9,5}, input2 = {9,4,9,8,4};
         assertArrayEquals(result, test.intersection(input1,input2));
     }
+
+    @Test
+    public void threeSumValueSpec(){
+        int[] input = {3, 7, 1, 2, 8, 4,5}, input2 = {3,7,1,2,8,4,5}, input3 = {-1, 2, 1, -4, 5, -3};
+        assertTrue( test.threeSumValue(input3,-8));
+    }
+
+    @Test
+    public void notThreeSumValueSpe(){
+        int[] input = {3, 7, 1, 2,8, 4, 5 }, input2 = {-1, 2, 1, -4, 5, -3}, input3 = {-1, 2,1, -4,5 -3 };
+        assertTrue(test.threeSumValue(input3, 0));
+    }
+
+
+
 }
