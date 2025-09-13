@@ -1,11 +1,14 @@
 package org.example;
 
 import java.util.*;
+import java.util.stream.Stream;
 
 import static java.util.Arrays.parallelSetAll;
 
 /**
  * @Author Habeeb Animashaun
+ * @since  1.0
+ * \
  * email: habeebimbola@yahoo.com
  * Data Structure And Algorithm Exercises
  */
@@ -69,6 +72,7 @@ public class AlgorithmChallengeTasks {
     }
 
     public static void main(String... args) {
+
         AlgorithmChallengeTasks practiseTest = new AlgorithmChallengeTasks();
         int[] ints = {-15 ,-7 ,-9 ,-14 ,-12}, nums = {3, 4, 4, 6, 1, 4, 4};
 //        practiseTest.cyclicRotate(ints, 3);
@@ -255,7 +259,7 @@ public class AlgorithmChallengeTasks {
 
 
     public int tapeEquilibriumTest(int[] A) {
-        int size = A.length, sum1 = 0, sum2 = A[0], minimum = 0;
+        int size = A.length, sum1 = 0, sum2 = A[0], minimum;
 
         for (int index = 1; index < size; index++) {
             sum1 += A[index];
@@ -286,7 +290,6 @@ public class AlgorithmChallengeTasks {
                     max = result[operations[index] - 1];
                 }
             }
-            ;
 
             if (operations[index] == (input + 1)) {
                 Arrays.fill(result, max);
@@ -383,6 +386,7 @@ public class AlgorithmChallengeTasks {
     }
 
     public double closestTozero(int[] nums) {
+        Stream.of(Optional.ofNullable(null)).findFirst().ifPresent(System.out::println);
         int size = nums.length;
 
         if (size == 0) {
@@ -631,7 +635,20 @@ public class AlgorithmChallengeTasks {
         return  false;
     }
 
-   static class Node{
+    public int validWord(String input) {
+        int result = 0;
+
+        String words[] = input.split("\\s+");
+
+        for (String word: words){
+            if (word.matches("^([a-zA-Z&&[^aeiou]]+[aeiou]+\\d*.+|[aeiou]*[a-zA-Z&&[^aeiou]]+\\d*.+)*$")){
+                result++;
+            }
+        }
+        return result;
+    }
+
+    static class Node{
         Integer value;
         Node nextNode;
 
@@ -681,11 +698,35 @@ public class AlgorithmChallengeTasks {
               pointer = pointer.nextNode;
               position--;
           }
-          
+
       }
   }
 
+public boolean threeSum(int[] numbers, int target){
 
+        int size = numbers.length, sum = 0, low = 0, high = 0;
+
+        Arrays.sort(numbers);
+
+        for(int index = 0; index < size - 1; index++ ){
+            low = index + 1;
+            high = size - 1;
+
+            while (low < high){
+                sum = numbers[index] + numbers[low] + numbers[high] ;
+                if( sum < target){
+                    low++;
+                } else if (sum > target) {
+                    high--;
+                }
+                else {
+                    return true;
+                }
+            }
+        }
+
+        return  false;
+}
 
 
 
