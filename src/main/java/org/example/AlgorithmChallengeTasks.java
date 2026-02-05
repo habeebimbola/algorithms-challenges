@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.*;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 import static java.util.Arrays.parallelSetAll;
@@ -645,6 +646,46 @@ public class AlgorithmChallengeTasks {
                 result++;
             }
         }
+        return result;
+    }
+    Predicate<Integer> isOdd = n -> n % 2 != 0;
+
+    public boolean isOdd(Integer number){
+        return isOdd.test(number);
+    }
+
+    public Integer lonelyInteger(List<Integer> integerList){
+        int result = 0;
+        Set<Integer> numberSet = new HashSet<>();
+        for(Integer item: integerList){
+            if(!numberSet.add(item)){
+                numberSet.remove(item);
+            }
+        }
+        result = numberSet.stream().findFirst().get();
+        return result;
+    }
+    public int lonelyInteger(Integer[] numbers) {
+        int result = 0;
+        Map<Integer, Integer> numberMap = new HashMap<>();
+
+        for(int index = 0; index < numbers.length ; index++){
+
+            if(!numberMap.containsKey(numbers)){
+                numberMap.put(numbers[index], 1 );
+            }
+            numberMap.put(numbers[index], numberMap.get(numbers[index]) + 1 );
+        }
+        for( Map.Entry<Integer,Integer> numbKeys : numberMap.entrySet()){
+            result = numbKeys.getKey();
+
+            if(numbKeys.getValue() == 1)
+            {
+                return result;
+            }
+        }
+
+
         return result;
     }
 
